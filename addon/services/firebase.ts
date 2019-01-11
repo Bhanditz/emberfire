@@ -1,4 +1,5 @@
-import * as firebase from 'firebase/app';
+// @ts-ignore
+import firebase from 'firebase/app';
 import Service from '@ember/service';
 
 export default class FirebaseService extends Service {

@@ -1,3 +1,4 @@
+// TODO handle this not being present
 import BaseAuthorizer from 'ember-simple-auth/authorizers/base';
 
 export default class FirebaseAuthorizer extends BaseAuthorizer {

@@ -11,7 +11,7 @@ import 'firebase/functions';
 import 'firebase/messaging';
 import 'firebase/storage';
 
-import { app, auth, database, firestore, functions, messaging, storage } from 'firebase';
+import { app, auth, database, firestore, functions, messaging, storage } from 'firebase/app';
 
 const getApp = (service: FirebaseAppService) => {
     const firebase = get(service, 'firebase');
@@ -34,6 +34,7 @@ export default class FirebaseAppService extends Service.extend({
     auth = (): auth.Auth => getApp(this).auth();
     database = (databaseURL?: string): database.Database => (getApp(this).database as any)(databaseURL);
     firestore = (): firestore.Firestore => getApp(this).firestore();
+    // TODO region selection
     functions = (): functions.Functions => getApp(this).functions();
     messaging = (): messaging.Messaging => getApp(this).messaging();
     storage = (storageBucket?: string): storage.Storage => getApp(this).storage(storageBucket);

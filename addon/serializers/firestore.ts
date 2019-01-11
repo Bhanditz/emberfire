@@ -1,5 +1,5 @@
 import DS from 'ember-data';
-import { firestore } from 'firebase';
+import { firestore } from 'firebase/app';
 import { get } from '@ember/object';
 
 export type DocumentSnapshot = firestore.DocumentSnapshot | firestore.QueryDocumentSnapshot;

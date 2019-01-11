@@ -32,6 +32,7 @@ export default class FirestoreAdapter extends DS.Adapter.extend({
     firebaseApp: service('firebase-app'),
     settings: { timestampsInSnapshots: true } as firestore.Settings,
     enablePersistence: false as boolean,
+    persistenceSettings: undefined, // TODO type as firestore.PersistenceSettings|undefined
     firestore: undefined as firestore.Firestore|undefined,
     defaultSerializer: '-firestore'
 
@@ -52,6 +53,23 @@ export default class FirestoreAdapter extends DS.Adapter.extend({
      */
     // @ts-ignore repeat here for the tyepdocs
     enablePersistence: boolean;
+
+    /**
+     * Pass persistence settings to Cloud Firestore, enablePersistence has to be true for these to be used
+     * 
+     * ```js
+     * // app/adapters/application.js
+     * import FirestoreAdapter from 'emberfire/adapters/firestore';
+     *
+     * export default FirestoreAdapter.extend({
+     *   enablePersistence: true,
+     *   persistenceSettings: { experimentalTabSynchronization: true }
+     * });
+     * ```
+     * 
+     */
+    // @ts-ignore repeat here for the tyepdocs
+    persistenceSettings: boolean;
 
     /**
      * Override the default configuration of the Cloud Firestore adapter: `{ timestampsInSnapshots: true }`

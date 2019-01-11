@@ -1,3 +1,4 @@
+// TODO handle this not being present
 import BaseAuthenticator from 'ember-simple-auth/authenticators/base';
 import RSVP from 'rsvp';
 import Ember from 'ember';
@@ -15,7 +16,21 @@ export default class FirebaseAuthenticator extends BaseAuthenticator.extend({
     
 }) {
 
-    // @ts-ignore repeat here for typedoc
+    /**
+     * Override the default FirebaseApp Service used by the authenticator: `service('firebase-app')`
+     * 
+     * ```js
+     * // app/authenticators/application.js
+     * import FirebaseAuthenticator from 'emberfire/authenticators/firebase';
+     * import { inject as service } from '@ember/service';
+     *
+     * export default FirebaseAuthenticator.extend({
+     *   firebaseApp: service('firebase-different-app')
+     * });
+     * ```
+     * 
+     */
+    // @ts-ignore repeat here for the tyepdocs
     firebaseApp: Ember.ComputedProperty<FirebaseAppService, FirebaseAppService>;
 
     restore(data: any) {

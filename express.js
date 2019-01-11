@@ -7,7 +7,7 @@ let app = express();
 let fastboot = new FastBoot({
   distPath: `${__dirname}/dist`,
   sandboxGlobals: {
-    XMLHttpRequest: require('xmlhttprequest').XMLHttpRequest,
+    XMLHttpRequest: require('xhr2'),
     WebSocket: require('ws')
   }
 });

@@ -1,3 +1,4 @@
+// TODO handle this not being present
 import BaseSessionStore from 'ember-simple-auth/session-stores/base';
 
 import { get, set } from '@ember/object';
@@ -16,7 +17,21 @@ export default class FirebaseSessionStore extends BaseSessionStore.extend({
     firebaseApp: service('firebase-app')
 }) { 
 
-    // @ts-ignore repeat here for typedoc
+    /**
+     * Override the default FirebaseApp Service used by the session store: `service('firebase-app')`
+     * 
+     * ```js
+     * // app/session-stores/application.js
+     * import FirebaseSessionStore from 'emberfire/session-stores/firebase';
+     * import { inject as service } from '@ember/service';
+     *
+     * export default FirebaseSessionStore.extend({
+     *   firebaseApp: service('firebase-different-app')
+     * });
+     * ```
+     * 
+     */
+    // @ts-ignore repeat here for the tyepdocs
     firebaseApp: Ember.ComputedProperty<FirebaseAppService, FirebaseAppService>;
 
     restoring = true;
